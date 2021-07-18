@@ -1,10 +1,31 @@
-ORG 0x7c00  ; location of the bootlaoder in memory
+ORG 0x00;
 BITS 16 ; operation in 16 bit
+_start:
+    jmp short start ;BIOS parameter block first and second instructions must be this and next instruction
+    nop
+
+
+times 33 db 0 ; padding 33 bytes of the binary with 0 for BIOS parameter block
 
 start:
+    jmp step2 ; this will make a jump tp 0x7c0 segment and step2 offset
+    
+
+ step2:   
+    cli ; clear interrupts flags
+    ; enterring the  critical appleication area so diabling the interrupts
+    mov ax, 0x7c0 ; location where the bios will copy our bootloader to memory  
+    mov ds, ax ; setting up the data segment location to  0x7c0
+    mov es, ax  ; setting up the  extra segment to same location
+    mov ax, 0x00 ; setting up the stack location at start of the ram 
+    mov ss, ax ; setting  up to 0x00
+    mov sp, 0x7c00 ; setting up the stack pointer to 0x7c00 as it grows downwards to 0 full descending
+    ; critical secti0on ended to enabling inteerupts
+    sti ; enables interrupts
     mov si, message ; move the message lable address to si register
     call print ; fun call
     jmp $ ; stay here infinitely like while 1
+
 
 
 print:
@@ -25,6 +46,7 @@ printChar:
     mov ah, 0eh ; command arg to print  a char on the screen
     int 0x10   ; interrupt number to invoke the BIOS routine like a syscall for BIOS
     ret
+
 
 
 message: db 'Hello  World!' , 0 ; null term at the end '0' , symbol hello world
