@@ -8,7 +8,7 @@ _start:
 times 33 db 0 ; padding 33 bytes of the binary with 0 for BIOS parameter block
 
 start:
-    jmp step2 ; this will make a jump tp 0x7c0 segment and step2 offset
+    jmp 0x7c0:step2 ; this will make a jump tp 0x7c0 segment and step2 offset
     
 
  step2:   
