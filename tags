@@ -1,0 +1,107 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+./bin/boot.bin	Makefile	/^.\/bin\/boot.bin: .\/src\/boot\/boot.asm$/;"	t
+./build/kernel.asm.o	Makefile	/^.\/build\/kernel.asm.o: .\/src\/kernel.asm$/;"	t
+./build/kernel.bin	Makefile	/^.\/build\/kernel.bin: $(FILES)$/;"	t
+./build/kernel.o	Makefile	/^.\/build\/kernel.o: .\/src\/kernel.c$/;"	t
+.asm	src/linker.ld	/^    .asm : ALIGN(4096)$/;"	S
+.bss	src/linker.ld	/^    .bss : ALIGN(4096)$/;"	S
+.data	src/linker.ld	/^    .data : ALIGN(4096)$/;"	S
+.rodata	src/linker.ld	/^    .rodata : ALIGN(4096)$/;"	S
+.text	src/linker.ld	/^    .text : ALIGN(4096)$/;"	S
+0	.vscode/extensions.json	/^        "asurance.binary-preview",$/;"	s	array:recommendations
+1	.vscode/extensions.json	/^        "kienlokl.binhex"$/;"	s	array:recommendations
+BITS	old/boot_basic.asm	/^BITS 16 ; operation in 16 bit$/;"	l
+BITS	old/boot_protectedModeJump.asm	/^BITS 16 ; operation in 16 bit$/;"	l
+BITS	old/boot_realMode.asm	/^BITS 16 ; operation in 16 bit$/;"	l
+BITS	src/boot/boot.asm	/^BITS 16 ; operation in 16 bit$/;"	l
+CODE_SEG	old/boot_protectedModeJump.asm	/^CODE_SEG equ gdtCode - gdtStart$/;"	d
+CODE_SEG	src/boot/boot.asm	/^CODE_SEG equ gdtCode - gdtStart$/;"	d
+CODE_SEG	src/kernel.asm	/^CODE_SEG equ 0x08$/;"	d
+DATA_SEG	old/boot_protectedModeJump.asm	/^DATA_SEG equ gdtData - gdtStart$/;"	d
+DATA_SEG	src/boot/boot.asm	/^DATA_SEG equ gdtData - gdtStart$/;"	d
+DATA_SEG	src/kernel.asm	/^DATA_SEG equ 0x10$/;"	d
+FILES	Makefile	/^FILES = .\/build\/kernel.asm.o .\/build\/kernel.o$/;"	m
+FLAGS	Makefile	/^FLAGS = -g -ffreestanding -falign-jumps -falign-functions -falign-labels -falign-loops -fstrengt/;"	m
+INCLUDES	Makefile	/^INCLUDES = -I.\/src$/;"	m
+KERNEL_H	src/kernel.h	/^#define KERNEL_H$/;"	d
+ORG	old/boot_basic.asm	/^ORG 0x7c00  ; location of the bootlaoder in memory$/;"	l
+ORG	old/boot_protectedModeJump.asm	/^ORG 0x7c00;$/;"	l
+ORG	old/boot_realMode.asm	/^ORG 0x00;$/;"	l
+ORG	src/boot/boot.asm	/^ORG 0x7c00;$/;"	l
+VIDEO_MEM_LOCATION	src/kernel.c	/^#define VIDEO_MEM_LOCATION /;"	d	file:
+_start	old/boot_protectedModeJump.asm	/^_start:$/;"	l
+_start	old/boot_realMode.asm	/^_start:$/;"	l
+_start	src/boot/boot.asm	/^_start:$/;"	l
+_start	src/kernel.asm	/^_start:$/;"	l
+all	Makefile	/^all: .\/bin\/boot.bin .\/build\/kernel.bin $/;"	t
+ataLbaRead	src/boot/boot.asm	/^ataLbaRead: ; read ata driver on osdev docs$/;"	l
+clean	Makefile	/^clean:$/;"	t
+done	old/boot_realMode.asm	/^.done:$/;"	l
+dw	old/boot_basic.asm	/^dw 0xAA55 ;  boot signature bytes written.  BIOS will look at this signature at thik that this m/;"	l
+dw	old/boot_protectedModeJump.asm	/^dw 0xAA55 ;  boot signature bytes written.  BIOS will look at this signature at thik that this m/;"	l
+dw	old/boot_realMode.asm	/^dw 0xAA55 ;  boot signature bytes written.  BIOS will look at this signature at thik that this m/;"	l
+dw	src/boot/boot.asm	/^dw 0xAA55 ;  boot signature bytes written.  BIOS will look at this signature at thik that this m/;"	l
+emulate	Makefile	/^emulate:$/;"	t
+extern	src/kernel.asm	/^extern kernelMain$/;"	l
+gdtCode	old/boot_protectedModeJump.asm	/^gdtCode:                ;CS should point to this$/;"	l
+gdtCode	src/boot/boot.asm	/^gdtCode:                ;CS should point to this$/;"	l
+gdtData	old/boot_protectedModeJump.asm	/^gdtData:               ; DS, SS,ES, FS, GS$/;"	l
+gdtData	src/boot/boot.asm	/^gdtData:               ; DS, SS,ES, FS, GS$/;"	l
+gdtDescriptor	old/boot_protectedModeJump.asm	/^gdtDescriptor:$/;"	l
+gdtDescriptor	src/boot/boot.asm	/^gdtDescriptor:$/;"	l
+gdtEnd	old/boot_protectedModeJump.asm	/^gdtEnd:$/;"	l
+gdtEnd	src/boot/boot.asm	/^gdtEnd:$/;"	l
+gdtNull	old/boot_protectedModeJump.asm	/^gdtNull:$/;"	l
+gdtNull	src/boot/boot.asm	/^gdtNull:$/;"	l
+gdtStart	old/boot_protectedModeJump.asm	/^gdtStart:$/;"	l
+gdtStart	src/boot/boot.asm	/^gdtStart:$/;"	l
+global	src/kernel.asm	/^global _start$/;"	l
+kernelMain	src/kernel.c	/^void kernelMain()$/;"	f	typeref:typename:void
+load32	old/boot_protectedModeJump.asm	/^load32:$/;"	l
+load32	src/boot/boot.asm	/^load32:$/;"	l
+loadProtected	old/boot_protectedModeJump.asm	/^.loadProtected:$/;"	l
+loadProtected	src/boot/boot.asm	/^.loadProtected:$/;"	l
+loop	old/boot_realMode.asm	/^.loop:    ; sublable inside print$/;"	l
+message	old/boot_basic.asm	/^message: db 'Hello  World!' , 0 ; null term at the end '0' , symbol hello world$/;"	d
+message	old/boot_realMode.asm	/^message: db 'Hello  World!' , 0 ; null term at the end '0' , symbol hello world$/;"	d
+mov	old/boot_protectedModeJump.asm	/^    mov ds, ax ; setting up the data segment location to  0x7c0$/;"	d
+mov	old/boot_realMode.asm	/^    mov ds, ax ; setting up the data segment location to  0x7c0$/;"	d
+mov	src/boot/boot.asm	/^    mov ds, ax ; setting up the data segment location to  0x7c0$/;"	d
+mov	src/boot/boot.asm	/^    mov dx, 0x1F0$/;"	d
+mov	src/boot/boot.asm	/^    mov dx, 0x1F2$/;"	d
+mov	src/boot/boot.asm	/^    mov dx, 0x1F3$/;"	d
+mov	src/boot/boot.asm	/^    mov dx, 0x1F4$/;"	d
+mov	src/boot/boot.asm	/^    mov dx, 0x1F5$/;"	d
+mov	src/boot/boot.asm	/^    mov dx, 0x1F6$/;"	d
+mov	src/boot/boot.asm	/^    mov dx, 0x1f7$/;"	d
+mov	src/kernel.asm	/^    mov ds, ax$/;"	d
+next_sector	src/boot/boot.asm	/^.next_sector:$/;"	l
+out	src/boot/boot.asm	/^    out dx, al$/;"	d
+print	old/boot_realMode.asm	/^print:$/;"	l
+printChar	old/boot_realMode.asm	/^printChar:$/;"	l
+recommendations	.vscode/extensions.json	/^    "recommendations": [$/;"	a
+start	old/boot_basic.asm	/^start:$/;"	l
+start	old/boot_protectedModeJump.asm	/^start:$/;"	l
+start	old/boot_realMode.asm	/^start:$/;"	l
+start	src/boot/boot.asm	/^start:$/;"	l
+step2	old/boot_protectedModeJump.asm	/^ step2:   $/;"	l
+step2	old/boot_realMode.asm	/^ step2:   $/;"	l
+step2	src/boot/boot.asm	/^ step2:   $/;"	l
+terminalMakeChar	src/kernel.c	/^uint16_t terminalMakeChar(uint8_t c , uint8_t color)$/;"	f	typeref:typename:uint16_t
+times	old/boot_basic.asm	/^times 510-($ - $$) db 0 ; this will pad the complete binary with 510 bytes with zeros;  if the c/;"	l
+times	old/boot_protectedModeJump.asm	/^times 33 db 0 ; padding 33 bytes of the binary with 0 for BIOS parameter block$/;"	l
+times	old/boot_protectedModeJump.asm	/^times 510-($ - $$) db 0 ; this will pad the complete binary with 510 bytes with zeros;  if the c/;"	l
+times	old/boot_realMode.asm	/^times 33 db 0 ; padding 33 bytes of the binary with 0 for BIOS parameter block$/;"	l
+times	old/boot_realMode.asm	/^times 510-($ - $$) db 0 ; this will pad the complete binary with 510 bytes with zeros;  if the c/;"	l
+times	src/boot/boot.asm	/^times 33 db 0 ; padding 33 bytes of the binary with 0 for BIOS parameter block$/;"	l
+times	src/boot/boot.asm	/^times 510-($ - $$) db 0 ; this will pad the complete binary with 510 bytes with zeros;  if the c/;"	l
+times	src/kernel.asm	/^times 512-($ - $$) db 0 ; for alignment issues to be avioded/;"	l
+try_again	src/boot/boot.asm	/^.try_again:$/;"	l

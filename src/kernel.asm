@@ -1,12 +1,10 @@
 [BITS 32]
 
-section .asm
 global _start
 extern kernelMain
 
 CODE_SEG equ 0x08
 DATA_SEG equ 0x10
-
 _start:
     mov ax, DATA_SEG
     mov ds, ax
@@ -20,7 +18,9 @@ _start:
     in al, 0x92  ; in refers to getting the value from the system bus
     or al, 2
     out 0x92, al ; out refers to writing value to system bus
+
     call kernelMain
+
     jmp $
 
 

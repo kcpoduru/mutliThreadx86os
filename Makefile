@@ -23,7 +23,9 @@ all: ./bin/boot.bin ./build/kernel.bin
 	i686-elf-gcc $(INCLUDES) $(FLAGS) -std=gnu99 -c ./src/kernel.c -o ./build/kernel.o
 
 emulate:
-	qemu-system-x86_64 -hda ./boot.bin
+	qemu-system-x86_64 -hda ./bin/os.bin
 
 clean:
 	rm -rf ./bin/*.bin ./build/*.o ${FILES}
+
+
