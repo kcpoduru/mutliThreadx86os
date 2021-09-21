@@ -1,6 +1,7 @@
 [BITS 32]
 
 global _start
+global problem
 extern kernelMain
 
 CODE_SEG equ 0x08
@@ -23,6 +24,10 @@ _start:
 
     jmp $
 
+
+problem:
+    mov eax, 0
+    div eax
 
 
 times 512-($ - $$) db 0 ; for alignment issues to be avioded

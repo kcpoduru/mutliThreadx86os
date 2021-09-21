@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
+
 uint16_t* videoMem = 0;
 uint16_t terminalRow = 0;
 uint16_t terminalCol = 0;
@@ -70,9 +71,17 @@ void print(const char * str)
 	}
 
 }
+
+
+
 void kernelMain()
 {
 	terminalInitialize();
-	print("hello world \n test");
+	print("hello world \ntest");
+	
+	// Initiazize the global interrupt table
+
+	idtInit();
+
 }
 

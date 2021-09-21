@@ -4,11 +4,11 @@
 
 void* memset(void * ptr , int c , size_t size)
 {
-	char *cPtr = (char *)prt;
+	char *cPtr = (char *)ptr;
 	
 	for(int i = 0; i < c ; i++)
 	{
-		cPrt[i]  = (char)c;
+		cPtr[i]  = (char)c;
 	}
 	return ptr;
 }

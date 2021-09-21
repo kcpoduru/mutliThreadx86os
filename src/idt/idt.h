@@ -23,5 +23,7 @@ struct idtrDesc
 } __attribute__((packed));
 
 
+void idtInit();
+
 
 #endif
