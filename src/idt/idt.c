@@ -2,11 +2,26 @@
 #include "config.h"
 #include "memory/memory.h"
 #include "kernel.h"
+#include "io/io.h"
 
-struct idtDesc idtDescriptors[PK_OS]; 
+struct idtDesc idtDescriptors[PKOS_TOTAL_INTERRUPTS]; 
 struct idtrDesc idtrDescriptor;
 
 extern void idtLoad(struct idtrDesc * ptr);
+extern void int21h();
+extern void noInterrupt();
+
+void int21hHandler()
+{
+    print("Keyboard pressed!\n");
+    outb(0x20, 0x20);
+}
+
+void noInterruptHandler()
+{
+    outb(0x20, 0x20);
+}
+
 
 void idtZero()
 {
@@ -29,7 +44,16 @@ void idtInit()
 	memset(idtDescriptors, 0, sizeof(idtDescriptors));
 	idtrDescriptor.limit = sizeof(idtDescriptors) - 1;
 	idtrDescriptor.base = (uint32_t )idtDescriptors;
-	idtSet(0, idtZero);
+
+    for (int i = 0; i < PKOS_TOTAL_INTERRUPTS; i++)
+    {
+        idtSet(i, noInterrupt);
+    }
+
+    idtSet(0, idtZero);
+    idtSet(0x21, int21h);
+
+
 	//load the interrupt descriptor 
 	idtLoad(&idtrDescriptor);
 }
