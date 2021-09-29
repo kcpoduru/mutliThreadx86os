@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include "io/io.h"
+#include "memory/heap/kheap.h"
 
 uint16_t* videoMem = 0;
 uint16_t terminalRow = 0;
@@ -81,7 +82,9 @@ void kernelMain()
 	
 	// Initiazize the global interrupt table
 
+    kheap_init();
 	idtInit();
+
 
 }
 
