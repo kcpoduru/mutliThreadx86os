@@ -31,3 +31,5 @@ struct heap
 int heapCreate(struct heap* heap, void* ptr, void* end, struct heapTable* table);
 void* heapMalloc(struct heap* heap, size_t size);
 void heapFree(struct heap* heap, void* ptr);
+
+#endif

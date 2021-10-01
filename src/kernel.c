@@ -82,9 +82,16 @@ void kernelMain()
 	
 	// Initiazize the global interrupt table
 
-    kheap_init();
-	idtInit();
+    kheapInit();
+	idtInit();		
 
-
+	void *ptr = kmalloc(5);
+	((char *)ptr)[0] = 'a';
+	void *ptr2 = kmalloc(5000);
+	((char *)ptr2)[0] = 'a';
+	void *ptr3 = kmalloc(8000);
+	((char *)ptr3)[0] = 'a';
+	kfree(ptr2);
+	void *ptr4 = kmalloc(5);
+	((char *)ptr4)[0] = 'a';
 }
-
