@@ -7,6 +7,21 @@ extern noInterruptHandler
 global int21h
 global idtLoad
 global noInterrupt
+
+global enableInterrupts
+global disableInterrupts
+
+enableInterrupts:
+    sti
+    ret
+
+disableInterrupts:
+    cli
+    ret
+
+
+
+
 idtLoad:
     push ebp
     mov ebp, esp

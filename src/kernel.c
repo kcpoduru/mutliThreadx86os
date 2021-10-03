@@ -3,6 +3,8 @@
 #include <stddef.h>
 #include "io/io.h"
 #include "memory/heap/kheap.h"
+#include "memory/paging/paging.h"
+
 
 uint16_t* videoMem = 0;
 uint16_t terminalRow = 0;
@@ -74,6 +76,7 @@ void print(const char * str)
 }
 
 
+static struct paging4gbChunk* kernelChunk = 0;
 
 void kernelMain()
 {
@@ -85,13 +88,15 @@ void kernelMain()
     kheapInit();
 	idtInit();		
 
-	void *ptr = kmalloc(5);
-	((char *)ptr)[0] = 'a';
-	void *ptr2 = kmalloc(5000);
-	((char *)ptr2)[0] = 'a';
-	void *ptr3 = kmalloc(8000);
-	((char *)ptr3)[0] = 'a';
-	kfree(ptr2);
-	void *ptr4 = kmalloc(5);
-	((char *)ptr4)[0] = 'a';
+
+    // Setup paging
+    kernelChunk = pagingNew4gb(PAGING_IS_WRITEABLE | PAGING_IS_PRESENT | PAGING_ACCESS_FROM_ALL);
+
+    // Switch to kernel paging chunk
+    pagingSwitch(paging4gbChunkGetDirectory(kernelChunk));
+
+    // Enable paging
+    enablePaging();
+  	enable_interrupts();
+
 }

@@ -24,6 +24,7 @@ struct idtrDesc
 
 
 void idtInit();
-
+void enableInterrupts();
+void disableInterrupts();
 
 #endif
