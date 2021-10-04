@@ -1,6 +1,6 @@
 #include "paging.h"
 #include "memory/heap/kheap.h"
-
+#include "status.h"
 
 void pagingLoadDirectory(uint32_t* directory);
 
@@ -29,8 +29,6 @@ struct paging4gbChunk* pagingNew4gb(uint8_t flags)
     chunk4gb->directoryEntry = directory;
 
     return chunk4gb;
-
-
 error:
     return NULL;
 }
@@ -47,3 +45,46 @@ uint32_t* paging4gbChunkGetDirectory(struct paging4gbChunk* chunk)
 {
     return chunk->directoryEntry;
 } 
+
+
+bool pagingIsAligned(void* addr)
+{
+    return ((uint32_t)addr % PAGING_PAGE_SIZE) == 0;
+} 
+
+
+
+int pagingGetIndexes(void* virtualAddress, uint32_t* directoryIndexOut, uint32_t* tableIndexOut)
+{
+   int res = 0;
+    if (!pagingIsAligned(virtualAddress))
+    {
+        res = -EINVARG;
+        goto out;
+    }  
+
+    *directoryIndexOut = ((uint32_t)virtualAddress / (PAGING_TOTAL_ENTRIES_PER_TABLE * PAGING_PAGE_SIZE));
+    *tableIndexOut = ((uint32_t) virtualAddress % (PAGING_TOTAL_ENTRIES_PER_TABLE * PAGING_PAGE_SIZE) / PAGING_PAGE_SIZE);
+out:
+    return res;
+}
+
+
+int pagingSet(uint32_t* directory, void* virt, uint32_t val)
+{
+    if (!pagingIsAligned(virt))
+    {
+        return -EINVARG;
+    }
+    uint32_t directoryIndex = 0;
+    uint32_t tableIndex = 0;
+    int res = pagingGetIndexes(virt, &directoryIndex, &tableIndex);
+    if (res < 0)
+    {
+        return res;
+    }
+    uint32_t entry = directory[directoryIndex];
+    uint32_t* table = (uint32_t*)(entry & 0xfffff000);
+    table[tableIndex] = val;
+    return 0;
+}

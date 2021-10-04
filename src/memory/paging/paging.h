@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <stdbool.h>
 
 #define PAGING_CACHE_DISABLED  0b00010000
 #define PAGING_WRITE_THROUGH   0b00001000
@@ -23,5 +24,8 @@ struct paging4gbChunk
 struct paging4gbChunk* pagingNew4gb(uint8_t flags);
 void pagingSwitch(uint32_t* directory);
 void enablePaging();
+int pagingSet(uint32_t* directory, void* virt, uint32_t val);
+int pagingGetIndexes(void* virtualAddress, uint32_t* directoryIndexOut, uint32_t* tableIndexOut);
+bool pagingIsAligned(void* addr);
 uint32_t* paging4gbChunkGetDirectory(struct paging4gbChunk* chunk);
 #endif 
