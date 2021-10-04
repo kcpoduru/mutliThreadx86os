@@ -36,7 +36,7 @@ error:
 }
 
 
-void pageSwitching(uint32_t * directory)
+void pagingSwitch(uint32_t * directory)
 {
     pagingLoadDirectory(directory);
     currentDirectory = directory;

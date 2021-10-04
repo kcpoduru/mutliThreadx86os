@@ -97,6 +97,6 @@ void kernelMain()
 
     // Enable paging
     enablePaging();
-  	enable_interrupts();
+  	enableInterrupts();
 
 }
