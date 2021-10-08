@@ -86,6 +86,8 @@ void kernelMain()
 	// Initiazize the global interrupt table
 
     kheapInit();
+
+	diskSearchAndInit();
 	idtInit();		
 
 
@@ -95,8 +97,6 @@ void kernelMain()
 	enablePaging();
 
 
-    char buf[512];
-    diskReadSector(0, 1, buf);
 
   	enableInterrupts();
 

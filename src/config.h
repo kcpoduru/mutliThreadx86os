@@ -9,7 +9,7 @@
 #define PKOS_HEAP_ADDRESS                   0x01000000 
 #define PKOS_HEAP_TABLE_ADDRESS             0x00007E00
 
-
+#define PKOS_SECTOR_SIZE                    512
 
 
 

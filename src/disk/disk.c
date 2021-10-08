@@ -1,4 +1,15 @@
+#include "disk.h"
 #include "io/io.h"
+#include "config.h"
+#include "status.h"
+#include "memory/memory.h"
+
+
+
+struct disk disk;
+
+
+
 int diskReadSector(int lba, int total, void* buf)
 {
     outb(0x1F6, (lba >> 24) | 0xE0);
@@ -28,3 +39,28 @@ int diskReadSector(int lba, int total, void* buf)
     }
     return 0;
 } 
+
+void diskSearchAndInit()
+{
+    memset(&disk, 0, sizeof(disk));
+    disk.type = PEACHOS_DISK_TYPE_REAL;
+    disk.sectorSize = PKOS_SECTOR_SIZE;
+}
+
+struct disk* diskGet(int index)
+{
+    if (index != 0)
+        return 0;
+    
+    return &disk;
+}
+
+
+
+struct disk* diskGet(int index)
+{
+    if (index != 0)
+        return 0;
+    
+    return &disk;
+}
