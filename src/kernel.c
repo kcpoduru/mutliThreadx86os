@@ -96,7 +96,7 @@ void kernelMain()
 
 
     char buf[512];
-    disk_read_sector(0, 1, buf);
+    diskReadSector(0, 1, buf);
 
   	enableInterrupts();
 
