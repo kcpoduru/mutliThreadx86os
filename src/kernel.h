@@ -12,4 +12,5 @@ void print(const char * str);
 #define VGA_HEIGHT			    	20
 #define WHITE_COLOR_CHAR 			15
 
+#define PKOS_MAX_PATH               108
 #endif

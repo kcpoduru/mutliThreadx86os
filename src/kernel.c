@@ -5,6 +5,8 @@
 #include "memory/heap/kheap.h"
 #include "memory/paging/paging.h"
 #include "disk/disk.h"
+#include "fs/pparser.h"
+#include "string/string.h"
 
 uint16_t* videoMem = 0;
 uint16_t terminalRow = 0;
@@ -95,6 +97,17 @@ void kernelMain()
     kernelChunk = pagingNew4gb(PAGING_IS_WRITEABLE | PAGING_IS_PRESENT | PAGING_ACCESS_FROM_ALL);
     pagingSwitch(paging4gbChunkGetDirectory(kernelChunk));   
 	enablePaging();
+
+
+
+    struct path_root* root_path = pathparser_parse("0:/bin/shell.exe", NULL);
+
+    if(root_path)
+    {
+
+
+    }
+
 
 
 
