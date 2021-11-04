@@ -12,6 +12,7 @@ uint16_t* videoMem = 0;
 uint16_t terminalRow = 0;
 uint16_t terminalCol = 0;
 
+#if 0
 size_t strlen(const char * str)
 {
 	size_t len = 0;
@@ -21,7 +22,7 @@ size_t strlen(const char * str)
 	}
 	return len;
 }
-
+#endif
 uint16_t terminalMakeChar(uint8_t c , uint8_t color)
 {
 	return ((color << 8) | c);
@@ -100,7 +101,7 @@ void kernelMain()
 
 
 
-    struct path_root* root_path = pathparser_parse("0:/bin/shell.exe", NULL);
+    struct pathRoot* root_path = pathParserParse("0:/bin/shell.exe", NULL);
 
     if(root_path)
     {

@@ -54,13 +54,3 @@ struct disk* diskGet(int index)
     
     return &disk;
 }
-
-
-
-struct disk* diskGet(int index)
-{
-    if (index != 0)
-        return 0;
-    
-    return &disk;
-}
