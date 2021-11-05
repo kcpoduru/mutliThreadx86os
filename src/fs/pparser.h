@@ -16,7 +16,7 @@ struct pathRoot
 };
 
 
-struct pathRoot* pathParserParse(const char* path, const char* currentDirectoryPath);
+struct pathRoot* pathparserParse(const char* path, const char* currentDirectoryPath);
 void pathparserFree(struct pathRoot* root);
 
 #endif 

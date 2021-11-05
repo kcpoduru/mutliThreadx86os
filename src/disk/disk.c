@@ -54,3 +54,13 @@ struct disk* diskGet(int index)
     
     return &disk;
 }
+
+int diskReadBlock(struct disk* idisk, unsigned int lba, int total, void* buf)
+{
+    if (idisk != &disk)
+    {
+        return -EIO;
+    }
+
+    return diskReadSector(lba, total, buf);
+}

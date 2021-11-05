@@ -7,6 +7,7 @@
 #include "disk/disk.h"
 #include "fs/pparser.h"
 #include "string/string.h"
+#include "disk/streamer.h"
 
 uint16_t* videoMem = 0;
 uint16_t terminalRow = 0;
@@ -101,16 +102,11 @@ void kernelMain()
 
 
 
-    struct pathRoot* root_path = pathParserParse("0:/bin/shell.exe", NULL);
-
-    if(root_path)
-    {
-
-
-    }
-
-
-
+    struct diskStream* stream = diskStreamerNew(0);
+    diskStreamerSeek(stream, 0x201);
+    unsigned char c = 0;
+    diskStreamerRead(stream, &c, 1);
+    while(1) {}
 
   	enableInterrupts();
 

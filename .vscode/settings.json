@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "paging.h": "c",
-        "disk.h": "c"
-    }
+        "disk.h": "c",
+        "streamer.h": "c",
+        "memory.h": "c",
+        "heap.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
