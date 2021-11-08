@@ -45,6 +45,7 @@ void diskSearchAndInit()
     memset(&disk, 0, sizeof(disk));
     disk.type = PEACHOS_DISK_TYPE_REAL;
     disk.sectorSize = PKOS_SECTOR_SIZE;
+    disk.filesystem = fsResolve(&disk);
 }
 
 struct disk* diskGet(int index)

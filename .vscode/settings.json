@@ -4,7 +4,8 @@
         "disk.h": "c",
         "streamer.h": "c",
         "memory.h": "c",
-        "heap.h": "c"
+        "heap.h": "c",
+        "kernel.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
