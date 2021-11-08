@@ -4,13 +4,32 @@ BITS 16 ; operation in 16 bit
 CODE_SEG equ gdtCode - gdtStart
 DATA_SEG equ gdtData - gdtStart
 
+jmp short start
+nop
 
-_start:
-    jmp short start ;BIOS parameter block first and second instructions must be this and next instruction
-    nop
+; FAT16 Header
+OEMIdentifier           db 'PKOS    '
+BytesPerSector          dw 0x200
+SectorsPerCluster       db 0x80
+ReservedSectors         dw 200
+FATCopies               db 0x02
+RootDirEntries          dw 0x40
+NumSectors              dw 0x00
+MediaType               db 0xF8
+SectorsPerFat           dw 0x100
+SectorsPerTrack         dw 0x20
+NumberOfHeads           dw 0x40
+HiddenSectors           dd 0x00
+SectorsBig              dd 0x773594
 
+; Extended BPB (Dos 4.0)
+DriveNumber             db 0x80
+WinNTBit                db 0x00
+Signature               db 0x29
+VolumeID                dd 0xD105
+VolumeIDString          db 'PEACHOS BOO'
+SystemIDString          db 'FAT16   '
 
-times 33 db 0 ; padding 33 bytes of the binary with 0 for BIOS parameter block
 
 start:
     jmp 0:step2 ; this will make a jump tp 0x7c0 segment and step2 offset
